@@ -7,10 +7,12 @@ T = TypeVar('T')
 R = TypeVar('R')
 S = TypeVar('S')
 
+def fn(*exprs: Any, ret: Optional[T]=None) -> Optional[T]:
+    return ret
 
-fn: Final[Callable[[Any, T], Optional[T]]] = lambda *exprs, ret=None: ret
-for_each: Final[Callable[[Iterable[Any], Callable[[Any], None]], None]] = lambda items, f, /: fn(
-    deque((f(item) for item in items), maxlen=0))
+def for_each(items: Iterable[T], f: Callable[[T], None], /) -> None:
+    for item in items:
+        f(item)
 
 # Inspired by `with-handlers` in Racket:
 # https://docs.racket-lang.org/reference/exns.html#%28form._%28%28lib._racket%2Fprivate%2Fmore-scheme..rkt%29._with-handlers%29%29
