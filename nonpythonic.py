@@ -1,5 +1,4 @@
-from collections import deque
-from typing import TypeVar, Final, Callable, Any, Optional, Iterable, Dict, Union, Type
+from typing import TypeVar, Callable, Any, Optional, Iterable, Dict, Union, Type
 
 __version__ = "0.0.0"
 
